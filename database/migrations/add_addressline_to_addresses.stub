@@ -1,0 +1,35 @@
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class AddAddresslineToAddresses extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::table('addresses', function (Blueprint $table) {
+            $table->string('line1',     60);
+            $table->string('line2',     60);
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::table('addresses', function (Blueprint $table) {
+            //
+	        $table->dropColumn('line1');
+	        $table->dropColumn('line2');
+        });
+    }
+}

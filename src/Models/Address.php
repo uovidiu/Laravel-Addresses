@@ -22,6 +22,8 @@ class Address extends Model
      * @inheritdoc
 	 */
 	protected $fillable = [
+		'line1',
+		'line2',
 		'street',
 		'city',
 		'state',
@@ -82,6 +84,8 @@ class Address extends Model
 	 */
 	public static function getValidationRules() {
 		$rules = [
+			'line1'     => 'required|string|min:3|max:60',
+			'line2'     => 'required|string|min:3|max:60',
 			'street'     => 'required|string|min:3|max:60',
 			'city'       => 'required|string|min:3|max:60',
 			'state'      => 'string|min:3|max:60',
@@ -145,6 +149,8 @@ class Address extends Model
 		$two[] = $this->city      ?: '';
 		$two[] = $this->state     ? '('. $this->state .')' : '';
 
+		$address[] = $this->line1 ?: '';
+		$address[] = $this->line2 ?: '';
 		$address[] = $this->street ?: '';
 		$address[] = implode( ' ', array_filter($two) );
 		$address[] = $this->getCountry() ?: '';
