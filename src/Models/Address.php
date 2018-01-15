@@ -10,7 +10,7 @@ use Webpatser\Countries\Countries;
  */
 class Address extends Model
 {
-	use SoftDeletes;
+	// use SoftDeletes;
 
 	/**
      * @todo make this editable via config file
